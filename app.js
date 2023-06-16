@@ -15,7 +15,7 @@ axios.get("http://127.0.0.1:5000/api/candy")
         console.log("Error", error);
     });
 
-function createCandy() {
+function create_candy() {
     let name_input = document.getElementById('name_input').value;
     let image_url_input = document.getElementById('image_url_input').value;
     let description_input = document.getElementById('description_input').value;
@@ -29,4 +29,19 @@ axios.request({
     }
 }).catch(error => {
     console.log("Sorry, Something went wrong");
-}) }
+})}
+let post = document.getElementById("post_but")
+post.addEventListener('click' , create_candy)
+
+function delete_candy() {
+    let id = document.getElementById('user_id_input')
+    axios.request({
+        url : "http://127.0.0.1:5000/api/candy",
+        method: "DELETE",
+        data: {
+            "user_id_input" : id
+        }
+    }).catch(error => {
+        console.log("sorry, something went wrong")
+    })
+}
